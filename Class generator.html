@@ -22,7 +22,7 @@
 	<p>Your second class selection is: <div id = "class2"></div></p>
 	<script>
 		let classes = [0,0,0,0,0,0];//Cleric, Druid, Mage, Wizard, Necro, Shaman
-		for (i = 0; i < 30; i++){
+		for (i = 0; i < 30; i++){//number of random numbers generated
 			let ranNum = Math.floor(Math.random() * 7);
 			if (ranNum < 4) {
 				classes[ranNum] += 1;
@@ -33,14 +33,15 @@
 			}
 		}
 		let className = "";
-		let firstClass = parseInt(getMax());
-		className = getClass(firstClass);
-		document.getElementById("class1").innerHTML = "" + className;
+		let firstClass = parseInt(getMax());//get the index of the most frequent generated number.
+		className = getClass(firstClass);//get the class name associated with that index
+		document.getElementById("class1").innerHTML = "" + className;//output using innerHTML
 		let secondClass = parseInt(getMax());
 		className = getClass(secondClass);
 		document.getElementById("class2").innerHTML = className;
 
 
+		//Returns the index of the most frequent number that was generated
 		function getMax() {
 			let max = 0;
 			let maxIndex = 0;
@@ -53,6 +54,8 @@
 			classes[maxIndex] = 0;//reset the class to 0 to allow another class to be selected
 			return maxIndex;
 		}
+		
+		//Returns the class name associated with the index
 		function getClass(index) {
 			switch(index) {
 				case 0:
